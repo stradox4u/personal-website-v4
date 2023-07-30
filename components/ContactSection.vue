@@ -1,12 +1,48 @@
 <script setup lang="ts">
+import { socialMedia } from '@/assets/socialMedia';
+
+type ContactForm = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 const contactForm = reactive({
   name: '',
   email: '',
   subject: '',
   message: '',
 });
-const handleSendMessage = () => {
-  console.log('Sending message');
+const loading = ref(false);
+const genError = ref('');
+const handleSendMessage = async () => {
+  if(!contactForm.name || !contactForm.email || !contactForm.subject || !contactForm.message) return;
+  const form = new FormData();
+  Object.keys(contactForm).forEach((key) => {
+    form.append(key, contactForm[key as keyof ContactForm]);
+  });
+
+  loading.value = true;
+  genError.value = '';
+  const { data, pending, error, status } = await useFetch(
+    '/api/sendContactMail',
+    {
+      method: 'POST',
+      body: contactForm,
+    });
+  loading.value = pending.value;
+
+  if(status.value === 'success') {
+    contactForm.name = '';
+    contactForm.email = '';
+    contactForm.subject = '';
+    contactForm.message = '';
+  }
+
+  if (error.value) {
+    genError.value = error.value.statusMessage as string;
+  }
 }
 const nameVal = [
   (val: string) => !!val || 'Name is required',
@@ -36,29 +72,50 @@ const messageVal = [
       <ui-section-title dark-title="Contact" light-title="Get in Touch"></ui-section-title>
       <div class="grid grid-cols-3 gap-8">
         <div class="col-span-2 flex flex-col gap-3 w-full">
-          <h4>Email Me</h4>
+          <h4 class="font-roboto text-3xl text-myWhite">Email Me</h4>
           <form @submit.prevent="handleSendMessage" class="flex flex-col gap-3 w-full">
             <div class="flex gap-x-6">
               <ui-base-input v-model="contactForm.name" placeholder-text="Name" input-type="text"
                 :validators="nameVal"></ui-base-input>
-              
+
               <ui-base-input v-model="contactForm.email" placeholder-text="Email" input-type="text"
-              :validators="emailVal"></ui-base-input>
+                :validators="emailVal"></ui-base-input>
             </div>
-            
+
             <ui-base-input v-model="contactForm.subject" placeholder-text="Subject" input-type="text"
-            :validators="subjVal"></ui-base-input>
+              :validators="subjVal"></ui-base-input>
 
             <ui-base-textarea v-model="contactForm.message" :rows="5" placeholder-text="Message"
               :validators="messageVal"></ui-base-textarea>
+
+            <span class="text-sm font-roboto text-rose-500 text-left">{{ genError }}</span>
+            <div class="my-4">
+              <ui-my-button button-type="submit" :disabled="loading">
+                <div class="flex justify-around gap-3">
+                  <span>Send Message</span>
+                  <Icon v-if="loading" name="mdi:loading" size="18px" class="text-myWhite animate-spin" />
+                </div>
+              </ui-my-button>
+            </div>
           </form>
 
         </div>
-        <div class="col-span-1">
-
+        <div class="col-span-1 flex flex-col gap-3">
+          <h4 class="font-roboto text-3xl text-myWhite">Social Media</h4>
+          <p class="font-roboto font-light text-myWhite text-xl">
+            I'm always available for the right project and opportunity. Feel free to contact me!
+          </p>
+          <div class="relative">
+            <div class="absolute left-[8%] border-r-4 h-full border-myPeach"></div>
+            <nuxt-link :to="media.url" :external="true" v-for="media in socialMedia" :key="media.name"
+              class="inline-flex items-center">
+              <Icon :name="media.icon" size="36px" class="text-myPeach pr-2 hover:scale-105" />
+              <span class="font-roboto font-light text-sm text-myWhite pl-2">{{ media.url }}</span>
+            </nuxt-link>
+          </div>
         </div>
       </div>
-      
+
     </div>
   </section>
 </template>

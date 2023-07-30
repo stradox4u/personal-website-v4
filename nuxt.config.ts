@@ -4,8 +4,11 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     'nuxt-icon',
+    'nuxt-mailer',
   ],
-  image: {},
+  image: {
+    format: ['webp'],
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -14,5 +17,16 @@ export default defineNuxtConfig({
   },
   css: [
     '@/assets/css/main.css',
-  ]
+  ],
+  runtimeConfig: {
+    mailerUser: '',
+    mailerPass: '',
+    mailerLog: '',
+    mailerDriver: '',
+    mailerHost: '',
+    mailerPort: '',
+    mailerSmtpTls: '',
+    mailerFromAddress: '',
+    mailerFromName: '',
+  }
 })
