@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Bungee+Outline&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .my-nav-item {
+    @apply p-4 hover:bg-gradient-to-t from-[#63C7B2] to-[#1B5448] hover:shadow-2xl text-myWhite text-lg font-roboto;
+  }
+}
