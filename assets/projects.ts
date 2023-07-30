@@ -40,7 +40,7 @@ export const projects: Project[] = [
       { name: "Vue JS", icon: "logos:vue" },
       { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
       { name: "Laravel", icon: "logos:laravel" },
-      { name: "Inertia JS", icon: "tabler:brands-inertia" },
+      { name: "Inertia JS", icon: "tabler:brand-inertia" },
       { name: "MySQL", icon: "logos:mysql-icon" },
       { name: "Digital Ocean", icon: "devicon:digitalocean" },
     ],

@@ -5,6 +5,8 @@
       <intro-section></intro-section>
       <experience-panel></experience-panel>
       <portfolio-section></portfolio-section>
+      <blog-section></blog-section>
+      <contact-section></contact-section>
     </div>
   </div>
 </template>

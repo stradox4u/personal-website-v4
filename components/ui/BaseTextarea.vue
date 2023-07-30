@@ -1,0 +1,46 @@
+<script setup lang="ts">
+interface TextareaProps {
+  modelValue: string;
+  rows: number;
+  placeholderText: string;
+  validators?: Array<(val: string) => boolean | string>;
+}
+const props = defineProps<TextareaProps>();
+
+const emit = defineEmits(['update:modelValue']);
+const emitUpdate = (event: Event) => {
+  emit('update:modelValue', (event.target as HTMLInputElement).value);
+  runValidators(event);
+}
+let valErrors: string[] = [];
+const runValidators = (event: Event) => {
+  if (!props.validators || props.validators.length === 0) return;
+  valErrors = [];
+  props.validators && props.validators.forEach((validator) => {
+    const isValid = validator((event.target as HTMLInputElement).value);
+    if (isValid !== true && typeof isValid === 'string') {
+      valErrors.push(isValid);
+    }
+  });
+}
+
+</script>
+
+<template>
+  <div class="w-full">
+    <div class="w-full pb-2">
+      <textarea :placeholder="placeholderText" :value="modelValue" @input="emitUpdate" autocomplete="on"
+        :rows="rows"
+        class="w-full border-b-2 border-myPeach px-4 bg-inputBg text-myWhite
+        py-3 focus:outline-none focus:border-none focus:ring-2 focus:ring-myCyan
+        placeholder:text-myLightGray" 
+        :class="{'border-rose-500': valErrors.length > 0}" >
+      </textarea>
+    </div>
+    <div class="flex flex-col gap-1 items-start">
+      <span v-for="(error, index) in valErrors" :key="index" class="text-rose-500 text-xs px-3 font-sans">
+        {{ error }}
+      </span>
+    </div>
+  </div>
+</template>
