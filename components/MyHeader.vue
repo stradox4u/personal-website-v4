@@ -8,16 +8,16 @@
     <div class="flex justify-end max-w-7xl mx-auto">
       <ul class="flex justify-between gap-x-8">
         <li>
-          <nuxt-link to="/" class="my-nav-item">Home</nuxt-link>
+          <ui-my-link to="/" title="Home" class="my-nav-item"></ui-my-link>
         </li>
         <li>
-          <nuxt-link to="/portfolio" class="my-nav-item">Portfolio</nuxt-link>
+          <ui-my-link to="/portfolio" title="Portfolio" class="my-nav-item"></ui-my-link>
         </li>
         <li>
-          <nuxt-link to="/blog" class="my-nav-item">Blog</nuxt-link>
+          <ui-my-link to="/blog" title="Blog" class="my-nav-item"></ui-my-link>
         </li>
         <li>
-          <nuxt-link to="/contact" class="my-nav-item">Contact</nuxt-link>
+          <ui-my-link to="/contact" title="Contact" class="my-nav-item"></ui-my-link>
         </li>
       </ul>
     </div>
