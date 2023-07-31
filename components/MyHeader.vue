@@ -31,7 +31,7 @@ const handleClick = () => {
           <ui-my-hamburger :menu-open="menuOpen" :handle-click="handleClick"></ui-my-hamburger>
         </li>
         <Transition name="drop">
-          <ul v-if="menuOpen" class="flex flex-col bg-myMidGray bg-opacity-90">
+          <ul @click="handleClick" v-if="menuOpen" class="flex flex-col bg-myMidGray bg-opacity-90">
             <ui-my-link to="/" title="Home" class="my-nav-item px-10"></ui-my-link>
             <ui-my-link to="/portfolio" title="Portfolio" class="my-nav-item px-10"></ui-my-link>
             <ui-my-link to="/blog" title="Blog" class="my-nav-item px-10"></ui-my-link>
