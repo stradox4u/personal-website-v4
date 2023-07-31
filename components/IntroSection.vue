@@ -28,7 +28,7 @@ const technologies = [
     <div class="max-w-7xl mx-auto py-12 flex sm:flex-row flex-col justify-between sm:items-stretch items-center gap-12">
       <div class="sm:w-[40%] w-[80%] sm:block flex justify-center">
         <nuxt-img src="/DSC_6026.jpg" class="sm:aspect-[9/16] aspect-square rounded-full sm:rounded-none
-        object-left-top object-cover" alt="headshot color" format="webp" sizes="sm:240px md:640px" />
+        object-left-top object-cover" alt="headshot color" format="webp" sizes="sm:240px md:640px" provider="imgix" />
       </div>
       <div class="w-full flex flex-col justify-between">
         <h3 class="text-2xl font-amaranth text-myCyan">Who am I?</h3>
