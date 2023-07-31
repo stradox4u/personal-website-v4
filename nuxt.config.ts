@@ -7,18 +7,9 @@ export default defineNuxtConfig({
     'nuxt-mailer',
   ],
   image: {
-    provider: 'ipx',
-    options: {
-      baseURL: process.env.NUXT_API_BASE_URL + '/ipx',
+    imgix: {
+      baseURL: 'https://kobokobong-092389317.imgix.net',
     },
-    // providers: {
-    //   proxy: {
-    //     provider: 'ipx',
-    //     options: {
-    //       baseURL: process.env.NUXT_API_BASE_URL + '/ipx',
-    //     },
-    //   },
-    // },
   },
   postcss: {
     plugins: {
