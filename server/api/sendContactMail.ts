@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   try {
     const text = `Contact form message from: ${name}
 
-      ${message}`;
+    Message: ${message}`;
     
     const response = await mailgunTransporter.sendMail({
       from: 'postmaster@arcodeh.pro',

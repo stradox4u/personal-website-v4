@@ -30,6 +30,8 @@ const handleSendMessage = async () => {
     {
       method: 'POST',
       body: contactForm,
+      key: 'contact-form',
+      watch: false,
     });
   loading.value = pending.value;
 
