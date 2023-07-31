@@ -28,5 +28,11 @@ export default defineNuxtConfig({
     mailerSmtpTls: '',
     mailerFromAddress: '',
     mailerFromName: '',
+    mailgun: {
+      host: process.env.NUXT_MAILGUN_HOST,
+      port: process.env.NUXT_MAILGUN_PORT,
+      user: process.env.NUXT_MAILGUN_USER,
+      password: process.env.NUXT_MAILGUN_PASSWORD,
+    }
   }
 })
