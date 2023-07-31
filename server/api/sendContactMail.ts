@@ -28,7 +28,6 @@ export default defineEventHandler(async (event) => {
       text,
       replyTo: email
     });
-    return JSON.stringify(response);
     if (response.accepted.length > 0) {
       return {
         message: 'Email sent successfully',
