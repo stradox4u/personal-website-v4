@@ -16,7 +16,7 @@ const visitProject = () => {
   <section class="bg-myDarkGray w-full border-t-2 border-myPeach">
     <div class="max-w-7xl mx-auto flex sm:flex-row flex-col justify-between py-8 gap-8">
       <div class="w-full">
-        <img :src="project?.image" class="object-cover aspect-square sm:w-96 w-full" />
+        <nuxt-img :src="project?.image" class="object-cover aspect-square sm:w-96 w-full" />
       </div>
 
       <!-- Details -->

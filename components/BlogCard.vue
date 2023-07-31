@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <nuxt-link :to="blog.url" :external="true" class="hover:scale-105">
     <div class="w-full">
-      <img :src="blog.image" class="aspect-[16/9] object-cover" />
+      <nuxt-img :src="blog.image" class="aspect-[16/9] object-cover" />
     </div>
     <div class="my-6 py-3 sm:px-0 px-3">
       <h4 class="font-amaranth font-bold text-2xl text-myWhite text-left mb-3">{{ blog.title }}</h4>
