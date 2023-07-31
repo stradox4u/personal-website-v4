@@ -69,7 +69,7 @@ onMounted(() => {
       </div>
       <!-- Hero Profile photo -->
       <div class="w-[100%] absolute -bottom-8 top-0 sm:-right-14 -right-10 flex justify-end z-0">
-        <nuxt-img src="/website-headshot.png" :modifiers="{grayscale: true}" class="h-full object-cover" />
+        <img src="/website-headshot.png" class="h-full object-cover" />
       </div>
     </div>
   </div>

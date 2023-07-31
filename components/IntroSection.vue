@@ -21,7 +21,7 @@ const technologies = [
   <section class="bg-myDarkGray px-10 py-8 w-full">
     <div class="max-w-7xl mx-auto py-12 flex sm:flex-row flex-col justify-between sm:items-stretch items-center gap-12">
       <div class="sm:w-[40%] w-[80%]">
-        <nuxt-img src="/DSC_6026.jpg" class="sm:aspect-[9/16] aspect-square rounded-full sm:rounded-none object-left-top object-cover" />
+        <img src="/DSC_6026.jpg" class="sm:aspect-[9/16] aspect-square rounded-full sm:rounded-none object-left-top object-cover" />
       </div>
       <div class="w-full flex flex-col justify-between">
         <h3 class="text-2xl font-amaranth text-myCyan">Who am I?</h3>
