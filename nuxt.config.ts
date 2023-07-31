@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   ],
   image: {
     imgix: {
-      baseURL: 'https://kobokobong-092389317.imgix.net',
+      baseURL: process.env.NUXT_IMGIX_BASE_URL,
     },
   },
   postcss: {

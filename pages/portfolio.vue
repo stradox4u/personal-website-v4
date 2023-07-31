@@ -11,7 +11,7 @@ import { projects } from '@/assets/projects';
           <ui-my-slot-link :to="`/portfolio/${project.slug}`" class="block">
             <div class="flex flex-col items-center">
               <nuxt-img :src="project.image" class="object-cover aspect-square h-28" sizes="sm:240px md:480px"
-                format="webp" provider="ipx" />
+                format="webp" provider="imgix" />
               <h3 class="text-center font-amaranth font-semibold text-base my-4 text-myWhite">{{ project.name }}</h3>
             </div>
           </ui-my-slot-link>
