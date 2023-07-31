@@ -6,7 +6,11 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-mailer',
   ],
-  image: {},
+  image: {
+    imgix: {
+      baseURL: process.env.NUXT_IMGIX_BASE_URL,
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},

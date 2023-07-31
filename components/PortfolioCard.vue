@@ -16,7 +16,8 @@ const props = defineProps<PortfolioCardProps>();
 <template>
   <nuxt-link :to="`/portfolio/${slug}`" class="hover:scale-105 bg-myLightGray rounded-b-md">
     <div class="w-full">
-      <img :src="image" class="aspect-square object-cover" />
+      <nuxt-img :src="image" class="aspect-square object-cover" sizes="sm:480px md:720px" format="webp"
+        :alt="`${slug}-image`" provider="imgix" />
     </div>
     <div class="my-6 divide-y-2 divide-myPeach px-3">
       <h4 class="font-amaranth font-bold text-2xl text-myWhite text-center">{{ name }}</h4>

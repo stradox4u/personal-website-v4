@@ -76,7 +76,8 @@ onMounted(() => {
       </div>
       <!-- Hero Profile photo -->
       <div class="w-[100%] absolute -bottom-8 top-0 sm:-right-14 -right-10 flex justify-end z-0">
-        <img src="/website-headshot.png" class="h-full object-cover" />
+        <nuxt-img src="/website-headshot.png" class="h-full object-cover" alt="headshot in b/w" 
+          sizes="sm:240px md:640px" format="webp" provider="imgix"/>
       </div>
     </div>
   </div>
