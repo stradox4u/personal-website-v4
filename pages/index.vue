@@ -16,21 +16,26 @@ useHead({
     { name: 'twitter:image', content: '/my-website-og.webp' },
   ],
   link: [
-    {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+    { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
   ]
-})
+});
+
+const contactSectionRef = ref<HTMLElement | null>(null);
+const contactMe = useContactMe(contactSectionRef);
 </script>
 
 
 <template>
   <div class="">
-    <hero-section></hero-section>
+    <hero-section :handle-contact-click="contactMe"></hero-section>
     <div class="bg-myDarkGray flex flex-col gap-y-16 pb-16">
-      <intro-section></intro-section>
+      <intro-section :handle-contact-click="contactMe"></intro-section>
       <experience-panel></experience-panel>
       <portfolio-section></portfolio-section>
       <blog-section></blog-section>
-      <contact-section></contact-section>
+      <div ref="contactSectionRef">
+        <contact-section></contact-section>
+      </div>
     </div>
   </div>
 </template>
