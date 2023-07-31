@@ -6,9 +6,6 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-mailer',
   ],
-  image: {
-    format: ['webp'],
-  },
   postcss: {
     plugins: {
       tailwindcss: {},
