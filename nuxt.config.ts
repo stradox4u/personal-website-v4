@@ -7,15 +7,18 @@ export default defineNuxtConfig({
     'nuxt-mailer',
   ],
   image: {
-    provider: 'proxy',
-    providers: {
-      proxy: {
-        provider: 'ipx',
-        options: {
-          baseURL: process.env.NUXT_API_BASE_URL + '/ipx',
-        },
-      },
+    provider: 'ipx',
+    options: {
+      baseURL: process.env.NUXT_API_BASE_URL + '/ipx',
     },
+    // providers: {
+    //   proxy: {
+    //     provider: 'ipx',
+    //     options: {
+    //       baseURL: process.env.NUXT_API_BASE_URL + '/ipx',
+    //     },
+    //   },
+    // },
   },
   postcss: {
     plugins: {
