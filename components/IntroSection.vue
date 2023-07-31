@@ -1,4 +1,10 @@
 <script setup lang="ts">
+type IntroSectionProps = {
+  handleContactClick: () => void;
+}
+
+const props = defineProps<IntroSectionProps>();
+
 const technologies = [
   { name: "Vue JS", icon: "logos-vue" },
   { name: "Nuxt", icon: "logos-nuxt-icon" },
@@ -75,7 +81,7 @@ const technologies = [
             </span>
           </div>
           <div class="my-4">
-            <ui-my-button>contact me</ui-my-button>
+            <ui-my-button :handle-click="handleContactClick">contact me</ui-my-button>
           </div>
         </div>
       </div>

@@ -1,4 +1,11 @@
 <script setup lang="ts">
+type HeroSectionProps = {
+  handleContactClick: () => void;
+}
+
+const props = defineProps<HeroSectionProps>();
+
+
 const typingEntries = ["Umar", "a Developer"];
 const currTypingEntryIndex = ref(0);
 const typingOutput = ref("");
@@ -59,7 +66,7 @@ onMounted(() => {
           </h3>
           <h4 class="text-myWhite font-amaranth sm:text-2xl text-xl">I build great web experiences.</h4>
           <div class="my-4">
-            <ui-my-button>contact me</ui-my-button>
+            <ui-my-button :handle-click="handleContactClick">contact me</ui-my-button>
           </div>
         </div>
         <div class="mt-8 justify-self-end">
