@@ -8,5 +8,5 @@ const props = defineProps<CustomLinkProps>();
 </script>
 
 <template>
-  <ui-custom-link :to="to">{{ title }}</ui-custom-link>
+  <ui-custom-link :to="to" >{{ title }}</ui-custom-link>
 </template>

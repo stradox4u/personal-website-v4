@@ -14,13 +14,13 @@ const visitProject = () => {
 
 <template>
   <section class="bg-myDarkGray w-full border-t-2 border-myPeach">
-    <div class="max-w-7xl mx-auto flex justify-between py-8 gap-8">
+    <div class="max-w-7xl mx-auto flex sm:flex-row flex-col justify-between py-8 gap-8">
       <div class="w-full">
-        <nuxt-img :src="project?.image" class="object-cover aspect-square h-96" />
+        <nuxt-img :src="project?.image" class="object-cover aspect-square sm:w-96 w-full" />
       </div>
 
       <!-- Details -->
-      <div class="flex flex-col justify-between divide-y divide-myPeach">
+      <div class="flex flex-col justify-between divide-y divide-myPeach sm:px-0 px-3">
         <span class="inline-flex gap-3 items-baseline">
           <h5 class="font-roboto font-semibold text-xl text-myWhite">Thesis:</h5>
           <p class="font-roboto font-light text-xl text-myWhite">{{ project?.thesis }}</p>

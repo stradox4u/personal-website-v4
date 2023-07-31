@@ -51,13 +51,13 @@ onMounted(() => {
     <div class="max-w-7xl mx-auto pt-12 flex justify-between items-stretch relative">
       <div class="flex flex-col justify-between gap-20">
         <div class="mt-24">
-          <h1 class="text-3xl font-amaranth text-myWhite">Hi There!</h1>
-          <h3 class="text-myWhite font-amaranth font-bold text-5xl">
+          <h1 class="sm:text-3xl text-2xl font-amaranth text-myWhite">Hi There!</h1>
+          <h3 class="text-myWhite font-amaranth font-bold sm:text-5xl text-4xl">
             I am
             <span>{{ typingOutput }}</span>
             <span class="border-r-2 border-myWhite animate-ping"></span>
           </h3>
-          <h4 class="text-myWhite font-amaranth text-2xl">I build great web experiences.</h4>
+          <h4 class="text-myWhite font-amaranth sm:text-2xl text-xl">I build great web experiences.</h4>
           <div class="my-4">
             <ui-my-button>contact me</ui-my-button>
           </div>
@@ -68,8 +68,8 @@ onMounted(() => {
 
       </div>
       <!-- Hero Profile photo -->
-      <div class="w-[50%] absolute -bottom-8 right-0">
-        <nuxt-img src="/DSC_6026.jpg" class="" />
+      <div class="w-[50%] absolute -bottom-8 top-0 sm:right-0 -right-12">
+        <nuxt-img src="/DSC_6026.jpg" :modifiers="{grayscale: true}" class="h-full object-cover" />
       </div>
     </div>
   </div>

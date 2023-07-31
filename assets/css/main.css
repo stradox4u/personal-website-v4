@@ -7,6 +7,23 @@
 
 @layer components {
   .my-nav-item {
-    @apply p-4 hover:bg-gradient-to-t from-[#63C7B2] to-[#1B5448] hover:shadow-2xl text-myWhite text-lg font-roboto;
+    @apply px-8 p-4 hover:bg-gradient-to-t from-[#63C7B2] to-[#1B5448] hover:shadow-2xl text-myWhite text-lg font-roboto;
   }
+}
+
+.drop-enter-from,
+.drop-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.drop-enter-to,
+.drop-leave-from {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.drop-enter-active,
+.drop-leave-active {
+  transition: all 0.5s ease;
 }

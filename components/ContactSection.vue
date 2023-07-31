@@ -67,14 +67,14 @@ const messageVal = [
 
 
 <template>
-  <section class="bg-myDarkGray w-full">
+  <section id="contactSection" class="bg-myDarkGray w-full overflow-hidden">
     <div class="max-w-7xl mx-auto flex flex-col gap-12">
       <ui-section-title dark-title="Contact" light-title="Get in Touch"></ui-section-title>
-      <div class="grid grid-cols-3 gap-8">
-        <div class="col-span-2 flex flex-col gap-3 w-full">
+      <div class="grid sm:grid-cols-3 grid-cols-1 gap-8">
+        <div class="sm:col-span-2 col-span-1 flex flex-col gap-3 w-full sm:px-0 px-3">
           <h4 class="font-roboto text-3xl text-myWhite">Email Me</h4>
           <form @submit.prevent="handleSendMessage" class="flex flex-col gap-3 w-full">
-            <div class="flex gap-x-6">
+            <div class="flex sm:flex-row flex-col sm:gap-x-6 gap-y-3">
               <ui-base-input v-model="contactForm.name" placeholder-text="Name" input-type="text"
                 :validators="nameVal"></ui-base-input>
 
@@ -100,7 +100,7 @@ const messageVal = [
           </form>
 
         </div>
-        <div class="col-span-1 flex flex-col gap-3">
+        <div class="col-span-1 flex flex-col gap-3 w-full sm:px-0 px-3">
           <h4 class="font-roboto text-3xl text-myWhite">Social Media</h4>
           <p class="font-roboto font-light text-myWhite text-xl">
             I'm always available for the right project and opportunity. Feel free to contact me!

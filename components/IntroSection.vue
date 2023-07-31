@@ -19,9 +19,9 @@ const technologies = [
 
 <template>
   <section class="bg-myDarkGray px-10 py-8 w-full">
-    <div class="max-w-7xl mx-auto py-12 flex justify-between items-stretch gap-12">
-      <div class="w-[40%]">
-        <nuxt-img src="/DSC_6026.jpg" class="aspect-[9/16] object-left-top object-cover" />
+    <div class="max-w-7xl mx-auto py-12 flex sm:flex-row flex-col justify-between sm:items-stretch items-center gap-12">
+      <div class="sm:w-[40%] w-[80%]">
+        <nuxt-img src="/DSC_6026.jpg" class="sm:aspect-[9/16] aspect-square rounded-full sm:rounded-none object-left-top object-cover" />
       </div>
       <div class="w-full flex flex-col justify-between">
         <h3 class="text-2xl font-amaranth text-myCyan">Who am I?</h3>
@@ -44,7 +44,7 @@ const technologies = [
   
         <!-- Technologies -->
         <div class="flex flex-col gap-2">
-          <div class="flex justify-between">
+          <div class="flex sm:flex-row flex-col gap-2 sm:justify-between">
             <div class="inline-flex gap-3">
               <span class="font-amaranth text-lg text-myWhite">Name:</span>
               <span class="font-amaranth text-lg text-myMidGray">Umar O. Adejoh</span>
@@ -54,7 +54,7 @@ const technologies = [
               <span class="font-amaranth text-lg text-myMidGray">Abuja, Nigeria</span>
             </div>
           </div>
-          <div class="inline-flex gap-3">
+          <div class="inline-flex gap-3 sm:flex-nowrap flex-wrap">
             <span class="font-amaranth text-lg text-myWhite">Languages:</span>
             <span class="font-amaranth text-lg text-myMidGray divide-x divide-myPeach">
               <span class="inline-flex items-center gap-2 px-3">Javascript <Icon name="logos-javascript" size="18px" /></span>
@@ -64,7 +64,7 @@ const technologies = [
               <span class="inline-flex items-center gap-2 px-3">CSS <Icon name="logos-css-3" size="18px" /></span>
             </span>
           </div>
-          <div class="inline-flex gap-3">
+          <div class="inline-flex gap-3 sm:flex-nowrap flex-wrap">
             <span class="font-amaranth text-lg text-myWhite">Technologies:</span>
             <span class="font-amaranth text-lg text-myMidGray inline-flex flex-wrap">
               <span class="inline-flex items-center gap-2 px-3" v-for="(tech, index) in technologies" :key="tech.name"

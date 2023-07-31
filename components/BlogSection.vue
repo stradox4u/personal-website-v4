@@ -25,18 +25,22 @@ const blogs: Blog[] = [
     url: 'https://stradoxcodes.hashnode.dev/rest-api-authentication-on-node-js-and-express-js-using-passport-js-and-jwts'
   }
 ]
+
+const goToBlog = () => {
+  return navigateTo('https://stradoxcodes.hashnode.dev/', { external: true });
+}
 </script>
 
 
 <template>
-  <section class="bg-myDarkGray w-full">
+  <section class="bg-myDarkGray w-full overflow-hidden">
     <div class="max-w-7xl mx-auto flex flex-col gap-12">
       <ui-section-title dark-title="Blogs" light-title="My Blog"></ui-section-title>
-      <div class="grid grid-cols-2 gap-8">
+      <div class="grid sm:grid-cols-2 grid-cols-1 gap-8">
         <blog-card v-for="blog in blogs" :key="blog.id" :blog="blog"></blog-card>
       </div>
       <div class="mx-auto">
-        <ui-my-hollow-button>
+        <ui-my-hollow-button :handle-click="goToBlog">
           <span>All Blogs</span>
           <template #icon>
             <Icon name="mdi:arrow-right" size="24px" />
