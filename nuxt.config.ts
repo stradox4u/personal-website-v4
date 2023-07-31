@@ -6,7 +6,17 @@ export default defineNuxtConfig({
     'nuxt-icon',
     'nuxt-mailer',
   ],
-  image: {},
+  image: {
+    provider: 'proxy',
+    providers: {
+      proxy: {
+        provider: 'ipx',
+        options: {
+          baseURL: process.env.NUXT_API_BASE_URL + '/ipx',
+        },
+      },
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
