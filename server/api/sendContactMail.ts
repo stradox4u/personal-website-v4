@@ -1,4 +1,5 @@
 import { useMailer } from '#mailer';
+import getEmailTemplate from '../../assets/contactEmail';
 
 export default defineEventHandler(async (event) => {
   const mailer = useMailer();
@@ -17,15 +18,14 @@ export default defineEventHandler(async (event) => {
   });
 
   try {
-    const text = `Contact form message from: ${name}
-
-    Message: ${message}`;
+    const { text, html } = getEmailTemplate({ name, email, message });
     
     const response = await mailTransporter.sendMail({
       from: config.mailer.fromEmail,
       to: config.mailer.toEmail,
       subject,
       text,
+      html,
       replyTo: email
     });
     if (response.accepted.length > 0) {
