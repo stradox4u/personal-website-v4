@@ -16,8 +16,8 @@ const technologies = [
   { name: "Tailwind CSS", icon: "logos-tailwindcss-icon" },
   { name: "Laravel", icon: "logos:laravel" },
   { name: "PostgreSQL", icon: "logos-postgresql" },
-  { name: "MySQL", icon: "logos-mysql-icon" },
-  { name: "Mongo DB", icon: "logos-mongodb-icon" },
+  { name: "MySQL", icon: "logos:mysql-icon" },
+  { name: "Mongo DB", icon: "logos:mongodb-icon" },
   { name: "Prisma", icon: "simple-icons:prisma"}
 ]
 </script>
