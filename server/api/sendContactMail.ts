@@ -7,12 +7,12 @@ export default defineEventHandler(async (event) => {
   const { name, email, subject, message } = body;
 
   const config = useRuntimeConfig();
-  const mailgunTransporter = mailer.customTransporter({
-    host: config.mailgun.host,
-    port: +config.mailgun.port,
+  const mailTransporter = mailer.customTransporter({
+    host: config.mailer.host,
+    port: +config.mailer.port,
     auth: {
-      user: config.mailgun.user,
-      pass: config.mailgun.password,
+      user: config.mailer.user,
+      pass: config.mailer.password,
     }
   });
 
@@ -21,9 +21,9 @@ export default defineEventHandler(async (event) => {
 
     Message: ${message}`;
     
-    const response = await mailgunTransporter.sendMail({
-      from: 'postmaster@arcodeh.pro',
-      to: 'admin@arcodeh.pro',
+    const response = await mailTransporter.sendMail({
+      from: config.mailer.fromEmail,
+      to: config.mailer.toEmail,
       subject,
       text,
       replyTo: email

@@ -80,7 +80,7 @@ const messageVal = [
               <ui-base-input v-model="contactForm.name" placeholder-text="Name" input-type="text"
                 :validators="nameVal"></ui-base-input>
 
-              <ui-base-input v-model="contactForm.email" placeholder-text="Email" input-type="text"
+              <ui-base-input v-model="contactForm.email" placeholder-text="Email" input-type="email"
                 :validators="emailVal"></ui-base-input>
             </div>
 
@@ -93,9 +93,10 @@ const messageVal = [
             <span class="text-sm font-roboto text-rose-500 text-left">{{ genError }}</span>
             <div class="my-4">
               <ui-my-button button-type="submit" :disabled="loading">
-                <div class="flex justify-around gap-3">
+                <div class="flex justify-around items-center relative">
                   <span>Send Message</span>
-                  <Icon v-if="loading" name="mdi:loading" size="18px" class="text-myWhite animate-spin" />
+                  <Icon v-if="loading" name="mdi:loading" size="18px" class="text-myWhite animate-spin
+                    absolute top[50%] -right-6 self-center" />
                 </div>
               </ui-my-button>
             </div>
