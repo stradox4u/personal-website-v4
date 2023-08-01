@@ -21,20 +21,13 @@ export default defineNuxtConfig({
     '@/assets/css/main.css',
   ],
   runtimeConfig: {
-    mailerUser: '',
-    mailerPass: '',
-    mailerLog: '',
-    mailerDriver: '',
-    mailerHost: '',
-    mailerPort: '',
-    mailerSmtpTls: '',
-    mailerFromAddress: '',
-    mailerFromName: '',
-    mailgun: {
-      host: process.env.NUXT_MAILGUN_HOST,
-      port: process.env.NUXT_MAILGUN_PORT,
-      user: process.env.NUXT_MAILGUN_USER,
-      password: process.env.NUXT_MAILGUN_PASSWORD,
+    mailer: {
+      host: process.env.NUXT_MAILER_HOST,
+      port: process.env.NUXT_MAILER_PORT,
+      user: process.env.NUXT_MAILER_USER,
+      password: process.env.NUXT_MAILER_PASSWORD,
+      fromEmail: process.env.NUXT_MAILER_FROM_ADDRESS,
+      toEmail: process.env.NUXT_MAILER_RECIPIENT
     }
   }
 })
