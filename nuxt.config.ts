@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-icon',
     'nuxt-mailer',
+    'nuxt-simple-robots'
   ],
   image: {
     imgix: {
@@ -16,6 +17,9 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     }
+  },
+  robots: {
+    disallow: ['/blog', '/contact'],
   },
   css: [
     '@/assets/css/main.css',
