@@ -2,7 +2,7 @@
 title: Dockerizing Laravel Sail and Nuxt
 description: A guide to dockerizing Laravel Sail and Nuxt for a better dev experience.
 ---
-# Heading 01
+# Dockerizing a Laravel 10 API and Nuxt 3 Frontend
 Laravel comes with a pretty handy way to use docker during development, it is called Laravel Sail and is a great implementation managed by the Laravel team itself. In fact, there's a `LABEL` option in the `Dockerfile` that names the maintainer as none other than Taylor Otwell himself.
 <br><br>
 This implementation works great if you're using Laravel by itself, and I would perhaps only advise that you add an alias for `./vendor/bin/sail`, to make all those sail commands easier to type for yourself.
@@ -10,14 +10,13 @@ This implementation works great if you're using Laravel by itself, and I would p
 Where I ran into headwinds was when I decided that for a better dev experience on a project I was working on with a Laravel API and a Nuxt frontend, I was going to run them both from one `docker-compose.yml` file, in a common parent folder. My folder structure looks something like this:
 <br><br>
 
-- Parent App Folder
-  - Client App
-  - Server App
-  - docker-compose.yml
++ Parent App Folder
+  + Client App
+  + Server App
+  + docker-compose.yml
 
 <br><br>
 Here's a walkthrough of how I got this working and how you could too.
-<br><br>
 
 ## Client App
 
