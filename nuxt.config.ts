@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     'nuxt-mailer',
     'nuxt-simple-robots',
     '@nuxt/content',
+    '@nuxthq/ui',
   ],
   image: {
     imgix: {

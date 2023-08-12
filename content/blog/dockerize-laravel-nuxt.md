@@ -1,8 +1,10 @@
 ---
-title: Dockerizing Laravel Sail and Nuxt
-description: A guide to dockerizing Laravel Sail and Nuxt for a better dev experience.
+title: Dockerizing Laravel Sail and Nuxt 3
+description: A guide to dockerizing Laravel Sail and Nuxt for a better dev experience using docker compose.
 ---
+
 # Dockerizing a Laravel 10 API and Nuxt 3 Frontend
+
 Laravel comes with a pretty handy way to use docker during development, it is called Laravel Sail and is a great implementation managed by the Laravel team itself. In fact, there's a `LABEL` option in the `Dockerfile` that names the maintainer as none other than Taylor Otwell himself.
 <br><br>
 This implementation works great if you're using Laravel by itself, and I would perhaps only advise that you add an alias for `./vendor/bin/sail`, to make all those sail commands easier to type for yourself.
@@ -10,10 +12,10 @@ This implementation works great if you're using Laravel by itself, and I would p
 Where I ran into headwinds was when I decided that for a better dev experience on a project I was working on with a Laravel API and a Nuxt frontend, I was going to run them both from one `docker-compose.yml` file, in a common parent folder. My folder structure looks something like this:
 <br><br>
 
-+ Parent App Folder
-  + Client App
-  + Server App
-  + docker-compose.yml
+- Parent App Folder
+  - Client App
+  - Server App
+  - docker-compose.yml
 
 <br><br>
 Here's a walkthrough of how I got this working and how you could too.
@@ -43,18 +45,18 @@ There were a few gotchas here though. Firstly, using the regular `WORKDIR` of `/
 Secondly, Nuxt polls on port 24678 for updates in dev mode, so we must expose this port. With these, the client is now able to run in a container. Next, we update our `docker-compose.yml` with a client service as shown below:
 
 ```yaml
-build: 
-      context: <path to client app>
-      target: dev
-    container_name: <client app container name>
-    volumes:
-      - <path to client app>:/client/
-    ports:
-      - 3000:3000
-      - 24678:24678
-    tty: true
-    network_mode: host
-    command: npm run dev
+  build: 
+    context: <path to client app>
+    target: dev
+  container_name: <client app container name>
+  volumes:
+    - <path to client app>:/client/
+  ports:
+    - 3000:3000
+    - 24678:24678
+  tty: true
+  network_mode: host
+  command: npm run dev
 ```
 
 Another gotcha here, if we have any server-side rendering that requires the forwarding of headers from the client side, this is broken without using host networking. We thus need to set our `network_mode` to `host`.
@@ -73,6 +75,62 @@ Finally, we can carefully go through the default Laravel Sail `docker-compose`, 
 
 ```yaml
 server:
+  build:
+    context: <path to Server App>/vendor/laravel/sail/runtimes/8.2
+    dockerfile: Dockerfile
+    args:
+      WWWGROUP: '${WWWGROUP}'
+  image: sail-8.2/app
+  extra_hosts:
+    - 'host.docker.internal:host-gateway'
+  ports:
+    - '${APP_PORT}:80'
+    - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+  env_file: .env
+  environment:
+    WWWUSER: '${WWWUSER}'
+    LARAVEL_SAIL: 1
+    XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+    XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+    IGNITION_LOCAL_SITES_PATH: '${PWD}'
+  volumes:
+    - '<path to Server App>:/var/www/html'
+  depends_on:
+    - pgsql
+
+pgsql:
+  image: 'postgres:15'
+  ports:
+    - 5432:5432
+  env_file: .env
+  environment:
+    PGPASSWORD: '${DB_PASSWORD}'
+    POSTGRES_DB: '${DB_DATABASE}'
+    POSTGRES_USER: '${DB_USERNAME}'
+    POSTGRES_PASSWORD: '${DB_PASSWORD}'
+  volumes:
+    - 'sail-pgsql:/var/lib/postgresql/data'
+    - '<path to Server App>/vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
+  healthcheck:
+    test:
+      - CMD
+      - pg_isready
+      - '-q'
+      - '-d'
+      - '${DB_DATABASE}'
+      - '-U'
+      - '${DB_USERNAME}'
+    retries: 3
+    timeout: 5s
+```
+
+Not any gotchas here particularly, as it should just work. To recap, the full `docker-compose.yml` should now look something like this:
+
+```yaml
+version: '3.7'
+
+services:
+  server:
     build:
       context: <path to Server App>/vendor/laravel/sail/runtimes/8.2
       dockerfile: Dockerfile
@@ -120,76 +178,20 @@ server:
         - '${DB_USERNAME}'
       retries: 3
       timeout: 5s
-```
-
-Not any gotchas here particularly, as it should just work. To recap, the full `docker-compose.yml` should now look something like this:
-
-```yaml
-version: '3.7'
-
-services:
-    server:
-        build:
-          context: <path to Server App>/vendor/laravel/sail/runtimes/8.2
-          dockerfile: Dockerfile
-          args:
-            WWWGROUP: '${WWWGROUP}'
-        image: sail-8.2/app
-        extra_hosts:
-          - 'host.docker.internal:host-gateway'
-        ports:
-          - '${APP_PORT}:80'
-          - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
-        env_file: .env
-        environment:
-          WWWUSER: '${WWWUSER}'
-          LARAVEL_SAIL: 1
-          XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
-          XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
-          IGNITION_LOCAL_SITES_PATH: '${PWD}'
-        volumes:
-          - '<path to Server App>:/var/www/html'
-        depends_on:
-          - pgsql
-  
-  pgsql:
-    image: 'postgres:15'
-    ports:
-      - 5432:5432
-    env_file: .env
-    environment:
-      PGPASSWORD: '${DB_PASSWORD}'
-      POSTGRES_DB: '${DB_DATABASE}'
-      POSTGRES_USER: '${DB_USERNAME}'
-      POSTGRES_PASSWORD: '${DB_PASSWORD}'
-    volumes:
-      - 'sail-pgsql:/var/lib/postgresql/data'
-      - '<path to Server App>/vendor/laravel/sail/database/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
-    healthcheck:
-      test:
-        - CMD
-        - pg_isready
-        - '-q'
-        - '-d'
-        - '${DB_DATABASE}'
-        - '-U'
-        - '${DB_USERNAME}'
-      retries: 3
-      timeout: 5s
     
     client:
-         build: 
-              context: <path to client app>
-              target: dev
-        container_name: <client app container name>
-        volumes:
-          - <path to client app>:/client/
-        ports:
-          - 3000:3000
-          - 24678:24678
-        tty: true
-        network_mode: host
-        command: npm run dev
+      build: 
+        context: <path to client app>
+        target: dev
+      container_name: <client app container name>
+      volumes:
+        - <path to client app>:/client/
+      ports:
+        - 3000:3000
+        - 24678:24678
+      tty: true
+      network_mode: host
+      command: npm run dev
 ```
 
 At this point, you should be able to start your entire application and have your server and client running in the same terminal using the following commands:

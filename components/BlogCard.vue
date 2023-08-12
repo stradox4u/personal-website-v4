@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { Blog } from './BlogSection.vue';
+import type { ParsedBlog } from './BlogSection.vue';
 
 const props = defineProps<{
-  blog: Blog;
+  blog: ParsedBlog;
 }>();
 </script>
 
 
 <template>
-  <nuxt-link :to="blog.url" :external="true" class="hover:scale-105">
-    <div class="w-full">
+  <nuxt-link :to="blog._path" :external="true" class="hover:scale-105">
+    <div v-if="blog.image" class="w-full">
       <nuxt-img :src="blog.image" class="aspect-[16/9] object-cover" sizes="sm:480px md:720px" format="webp"
         :alt="`${blog.title}-image`" provider="imgix" />
     </div>
