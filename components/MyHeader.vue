@@ -21,12 +21,12 @@ const handleClick = () => {
           <ui-my-link to="/blog" title="Blog" class="my-nav-item"></ui-my-link>
         </li>
         <li>
-          <ui-my-link to="" title="Contact" class="my-nav-item"></ui-my-link>
+          <ui-my-link to="/contact" title="Contact" class="my-nav-item"></ui-my-link>
         </li>
       </ul>
 
       <!-- Mobile Nav -->
-      <ul class="sm:hidden absolute top-0 right-0 pt-8">
+      <ul class="sm:hidden absolute top-0 right-6 pt-8">
         <li>
           <ui-my-hamburger :menu-open="menuOpen" :handle-click="handleClick"></ui-my-hamburger>
         </li>
@@ -35,7 +35,7 @@ const handleClick = () => {
             <ui-my-link to="/" title="Home" class="my-nav-item px-10"></ui-my-link>
             <ui-my-link to="/portfolio" title="Portfolio" class="my-nav-item px-10"></ui-my-link>
             <ui-my-link to="/blog" title="Blog" class="my-nav-item px-10"></ui-my-link>
-            <ui-my-link to="" title="Contact" class="my-nav-item px-10"></ui-my-link>
+            <ui-my-link to="/contact" title="Contact" class="my-nav-item px-10"></ui-my-link>
           </ul>
         </Transition>
         </ul>

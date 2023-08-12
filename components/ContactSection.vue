@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { socialMedia } from '@/assets/socialMedia';
 
-type ContactForm = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
 const contactForm = reactive({
   name: '',
   email: '',
@@ -16,36 +9,8 @@ const contactForm = reactive({
 });
 const loading = ref(false);
 const genError = ref('');
-const handleSendMessage = async () => {
-  if(!contactForm.name || !contactForm.email || !contactForm.subject || !contactForm.message) return;
-  const form = new FormData();
-  Object.keys(contactForm).forEach((key) => {
-    form.append(key, contactForm[key as keyof ContactForm]);
-  });
+const handleSendMessage = useSendContactMessage(contactForm, loading, genError);
 
-  loading.value = true;
-  genError.value = '';
-  const { data, pending, error, status } = await useFetch(
-    '/api/sendContactMail',
-    {
-      method: 'POST',
-      body: contactForm,
-      key: 'contact-form',
-      watch: false,
-    });
-  loading.value = pending.value;
-
-  if(status.value === 'success') {
-    contactForm.name = '';
-    contactForm.email = '';
-    contactForm.subject = '';
-    contactForm.message = '';
-  }
-
-  if (error.value) {
-    genError.value = error.value.statusMessage as string;
-  }
-}
 const nameVal = [
   (val: string) => !!val || 'Name is required',
   (val: string) => val.length > 3 || 'Name must be more than 3 characters',
