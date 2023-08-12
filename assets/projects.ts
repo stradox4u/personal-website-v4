@@ -26,7 +26,7 @@ export const projects: Project[] = [
       { name: "Tailwind CSS", icon: "logos:tailwindcss-icon" },
       { name: "Netlify", icon: "logos:netlify-icon" },
     ],
-    url: "https://stradox-marvel-discover.netlify.app",
+    url: "https://stradox-marvel-finder.netlify.app",
   },
   {
     name: "Archifolios",
