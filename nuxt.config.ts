@@ -5,7 +5,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-icon',
     'nuxt-mailer',
-    'nuxt-simple-robots'
+    'nuxt-simple-robots',
+    '@nuxt/content',
+    '@nuxthq/ui',
   ],
   image: {
     imgix: {
@@ -20,6 +22,11 @@ export default defineNuxtConfig({
   },
   robots: {
     disallow: ['/blog', '/contact'],
+  },
+  content: {
+    highlight: {
+      theme: "github-dark",
+    },
   },
   css: [
     '@/assets/css/main.css',

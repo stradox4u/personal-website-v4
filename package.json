@@ -9,8 +9,10 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/content": "^2.7.2",
     "@nuxt/devtools": "latest",
     "@nuxt/image": "^1.0.0-rc.1",
+    "@nuxthq/ui": "^2.7.0",
     "@types/node": "^18.17.1",
     "autoprefixer": "^10.4.14",
     "nuxt": "^3.6.5",
