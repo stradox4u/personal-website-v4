@@ -12,7 +12,6 @@ export interface ParsedBlog extends Blog, ParsedContent {}
 const { data, error } = await useAsyncData('blogs', () => queryContent<ParsedBlog>('blog').find());;
 
 const blogs = data.value?.slice(0, 2);
-console.log(blogs);
 
 const goToBlog = () => {
   return navigateTo('https://stradoxcodes.hashnode.dev/', { external: true });
