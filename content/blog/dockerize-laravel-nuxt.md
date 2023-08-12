@@ -1,6 +1,16 @@
 ---
 title: Dockerizing Laravel Sail and Nuxt 3
 description: A guide to dockerizing Laravel Sail and Nuxt for a better dev experience using docker compose.
+image: '/sail.webp'
+date: '2023-07-13'
+head:
+  meta:
+    - name: 'keywords'
+      content: 'nuxt 3, docker compose, laravel, laravel sail, server-side rendering, postgresql, api'
+    - name: 'author'
+      content: 'Umar Adejoh'
+    - name: 'copyright'
+      content: '© 2023 Umar Adejoh'
 ---
 
 # Dockerizing a Laravel 10 API and Nuxt 3 Frontend
