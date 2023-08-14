@@ -11,6 +11,8 @@ head:
       content: 'Umar Adejoh'
     - name: 'copyright'
       content: '© 2023 Umar Adejoh'
+    - name: 'title'
+      content: 'Sending Emails with Nuxt'
 ---
 
 # Sending Emails with Nuxt

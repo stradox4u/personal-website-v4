@@ -11,6 +11,8 @@ head:
       content: 'Umar Adejoh'
     - name: 'copyright'
       content: '© 2023 Umar Adejoh'
+    - name: 'title'
+      content: 'REST API Authentication on Node JS and Express JS, Using Passport JS and JWTs'
 ---
 
 # REST API Authentication on Node JS and Express JS, Using Passport JS and JWTs

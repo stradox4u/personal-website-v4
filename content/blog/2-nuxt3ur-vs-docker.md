@@ -11,6 +11,8 @@ head:
       content: 'Umar Adejoh'
     - name: 'copyright'
       content: '© 2023 Umar Adejoh'
+    - name: 'title'
+      content: 'Nuxt 3 Universal Rendering VS Docker Networking'
 ---
 
 # Nuxt 3 Universal Rendering VS Docker Networking

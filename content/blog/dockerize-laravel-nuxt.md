@@ -11,6 +11,8 @@ head:
       content: 'Umar Adejoh'
     - name: 'copyright'
       content: '© 2023 Umar Adejoh'
+    - name: 'title'
+      content: 'Dockerizing Laravel Sail with Nuxt 3'
 ---
 
 # Dockerizing a Laravel 10 API and Nuxt 3 Frontend
