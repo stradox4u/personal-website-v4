@@ -14,6 +14,8 @@ head:
 ---
 
 # Sending Emails with Nuxt
+![Sending Emails with Nuxt](/nuxt-mailer.webp)
+
 Sending emails is a requirement for many web applications, and even static websites. Most websites contain a `Contact Us` form, and a lot of implementations I have come across use the HTML anchor tag's `mailto` href attribute to send these emails. I find this very clunky as it opens the device's email client, rather than send an email directly. This is not great for UX, and so I have long sought a way to directly send these emails.
 
 A solution I found for this involves using the Nitro server that is created by Nuxt, which is used to handle the SSR and server routes functionality. We can easily leverage this server to send emails.
