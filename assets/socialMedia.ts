@@ -12,6 +12,6 @@ export const socialMedia = [
   {
     name: "Twitter",
     url: "https://twitter.com/stradox4u",
-    icon: "mdi:twitter-box"
+    icon: "fa6-brands:square-x-twitter"
   }
 ]
