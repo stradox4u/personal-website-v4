@@ -1,7 +1,7 @@
 ---
 title: Vue Form Validation
 description: How to Create Your Own Custom Form Validation in Vue 3
-image: '/nuxt-vs-docker.webp'
+image: '/validation-errors.png'
 date: '2023-09-02'
 head:
   meta:
@@ -17,6 +17,7 @@ head:
 
 # Vue Form Validation
 
+![image showing multiple validation errors](/validation-errors.png)
 
 There are quite a few libraries out there to help you with form validation in Vue 3 such as [Vuelidate](https://vuelidate.js.org) and many more. However, there sometimes are situations where your needs do not warrant the inclusion of a whole library with all the attendant dependencies and their ramifications for your project. You might also just be in need of something small and simple.
 
