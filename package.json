@@ -19,7 +19,8 @@
     "nuxt-icon": "^0.4.2",
     "nuxt-simple-robots": "^3.1.0",
     "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "nuxt-mailer": "^0.11.0"
