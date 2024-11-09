@@ -3,10 +3,6 @@ import { ParsedBlog } from '../../components/BlogSection.vue';
 
 const { data } = await useAsyncData('blogs', () => queryContent<ParsedBlog>('blog').find());
 const blogs = data.value;
-
-const goToBlog = () => {
-  return navigateTo('https://stradoxcodes.hashnode.dev/', { external: true });
-}
 </script>
 
 
@@ -21,12 +17,9 @@ const goToBlog = () => {
         <blog-card v-for="blog in blogs" :key="blog._id" :blog="blog"></blog-card>
       </div>
       <div class="mx-auto">
-        <ui-my-hollow-button :handle-click="goToBlog">
-          <span>See More</span>
-          <template #icon>
-            <Icon name="mdi:arrow-right" size="24px" />
-          </template>
-        </ui-my-hollow-button>
+        <ui-my-hollow-link-button destination="https://stradoxcodes.hashnode.dev/" :is-external="true" label-text="See More">
+          <Icon name="mdi:arrow-right" size="24px" />
+        </ui-my-hollow-link-button>
       </div>
     </div>
 

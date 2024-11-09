@@ -6,10 +6,6 @@ const route = useRoute();
 const project = computed(() => {
   return projects.find(project => project.slug === route.params.slug);
 });
-
-const visitProject = () => {
-  return navigateTo(project.value?.url, { external: true });
-}
 </script>
 
 <template>
@@ -43,7 +39,7 @@ const visitProject = () => {
    
         <!-- Visit Project -->
         <div class="py-6">
-          <ui-my-button :handle-click="visitProject">Visit Project</ui-my-button>
+          <ui-my-link-button :destination="project?.url" :is-external="true" label-text="Visit Project"></ui-my-link-button>
         </div>
       </div>
 
