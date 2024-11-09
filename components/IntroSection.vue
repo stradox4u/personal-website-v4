@@ -33,21 +33,23 @@ const technologies = [
       <div class="w-full flex flex-col justify-between">
         <h3 class="text-2xl font-amaranth text-myCyan">Who am I?</h3>
         <h3 class="text-3xl font-amaranth text-myPeach">I'm Umar Adejoh, a Full Stack Web Developer.</h3>
-        <p class="text-2xl font-amaranth text-myMidGray text-justify">
-          I was formally trained, and practiced as an architect for over 12 years.
-          My passion for tech eventually led me into web development.
-        </p>
-        <p class="text-2xl font-amaranth text-myMidGray text-justify">
-          I believe that tech is the future, and am excited to be a part of it.
-          My mantra is to deliver in line with the client's expectations, using whatever
-          methods/tools are most appropriate.
-        </p>
-        <p class="text-2xl font-amaranth text-myMidGray text-justify">
-          I try to give back to the community by being active on
-          <nuxt-link to="https://twitter.com/stradox4u" :external="true" class="text-myCyan">Twitter</nuxt-link>
-          and a few Discord servers as @stradox.
-        </p>
-        <div class="w-full border-b-4 border-myPeach"></div>
+        <div class="flex flex-col items-start gap-8">
+          <p class="text-2xl font-amaranth text-myMidGray text-justify">
+            I was formally trained, and practiced as an architect for over 12 years with
+            my passion for tech eventually leading me into web development.
+          </p>
+          <p class="text-2xl font-amaranth text-myMidGray text-justify">
+            I believe that tech is the future, and am excited to be a part of it.
+            My mantra is to deliver in line with the client's expectations, using whatever
+            methods/tools are most appropriate.
+          </p>
+          <p class="text-2xl font-amaranth text-myMidGray text-justify">
+            I try to give back to the community by making OSS contributions and being active on
+            <nuxt-link to="https://twitter.com/stradox4u" :external="true" class="text-myCyan">Twitter</nuxt-link>
+            and a few Discord servers, supporting upcoming developers as @stradox.
+          </p>
+          <div class="w-full border-b-4 border-myPeach"></div>
+        </div>
   
         <!-- Technologies -->
         <div class="flex flex-col gap-2">
@@ -82,7 +84,7 @@ const technologies = [
             </span>
           </div>
           <div class="my-4">
-            <ui-my-button :handle-click="handleContactClick">contact me</ui-my-button>
+            <ui-my-link-button destination="#contactSection" label-text="Contact me"></ui-my-link-button>
           </div>
         </div>
       </div>

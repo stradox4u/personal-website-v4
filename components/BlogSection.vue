@@ -12,10 +12,6 @@ export interface ParsedBlog extends Blog, ParsedContent {}
 const { data, error } = await useAsyncData('blogs', () => queryContent<ParsedBlog>('blog').find());;
 
 const blogs = data.value?.slice(0, 2);
-
-const goToBlog = () => {
-  return navigateTo('https://stradoxcodes.hashnode.dev/', { external: true });
-}
 </script>
 
 
@@ -27,12 +23,9 @@ const goToBlog = () => {
         <blog-card v-for="blog in blogs" :key="blog._id" :blog="blog"></blog-card>
       </div>
       <div class="mx-auto">
-        <ui-my-hollow-button :handle-click="goToBlog">
-          <span>All Blogs</span>
-          <template #icon>
-            <Icon name="mdi:arrow-right" size="24px" />
-          </template>
-        </ui-my-hollow-button>
+        <ui-my-hollow-link-button destination="https://stradoxcodes.hashnode.dev/" label-text="All Blogs" :is-external="true">
+          <Icon name="mdi:arrow-right" size="24px" />
+        </ui-my-hollow-link-button>
       </div>
     </div>
 
