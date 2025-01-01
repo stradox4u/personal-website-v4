@@ -19,8 +19,8 @@ export const projects: Project[] = [
     name: "Paystack-API",
     slug: "paystack-api",
     thesis: "An open source Typescript SDK for the Paystack API, to allow developers interact with the API in a type-safe manner, and enjoy IDE autocompletions.",
-    description: `Built using Deno, with the SDK written in Typescript. The SDK is published to JSR at https://jsr.io/@stradox/paystack,
-    and is also published to NPM (for CommonJS) at https://www.npmjs.com/package/@stradox/paystack.`,
+    description: `Built using Deno, with the SDK written in Typescript.
+    Published to JSR (for Deno) and also to NPM (for CommonJS).`,
     image: "/paystack.png",
     stack: [
       { name: "Deno", icon: "logos:deno" },
