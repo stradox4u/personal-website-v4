@@ -30,8 +30,8 @@ const contactMe = useContactMe(contactSectionRef);
     <hero-section :handle-contact-click="contactMe"></hero-section>
     <div class="bg-myDarkGray flex flex-col gap-y-16 pb-16">
       <intro-section :handle-contact-click="contactMe"></intro-section>
-      <random-images></random-images>
       <experience-panel></experience-panel>
+      <random-images></random-images>
       <portfolio-section></portfolio-section>
       <blog-section></blog-section>
       <div ref="contactSectionRef">
