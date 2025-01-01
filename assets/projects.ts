@@ -16,6 +16,21 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Paystack-API",
+    slug: "paystack-api",
+    thesis: "An open source Typescript SDK for the Paystack API, to allow developers interact with the API in a type-safe manner, and enjoy IDE autocompletions.",
+    description: `Built using Deno, with the SDK written in Typescript. The SDK is published to JSR at https://jsr.io/@stradox/paystack,
+    and is also published to NPM (for CommonJS) at https://www.npmjs.com/package/@stradox/paystack.`,
+    image: "/paystack.png",
+    stack: [
+      { name: "Deno", icon: "logos:deno" },
+      { name: "Typescript", icon: "logos:typescript-icon-round" },
+      { name: "NPM", icon: "logos:npm" },
+      { name: "JSR", icon: "simple-icons:jsr" },
+    ],
+    url: "https://www.npmjs.com/package/@stradox/paystack",
+  },
+  {
     name: "Marvel Discover",
     slug: "marvel-discover",
     thesis: "An app to allow visitors to discover random new Marvel Comics characters, as well as discover and purchase the latest comics.",
